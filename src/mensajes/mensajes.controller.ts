@@ -4,7 +4,6 @@ import { CreateMensajeDto } from './dto/create-mensaje-dto';
 @Controller('mensajes')
 export class MensajesController {
 
-
     @Post()
     create(@Body() crateMensajeDto: CreateMensajeDto){
         return 'mensaje creado';

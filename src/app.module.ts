@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MensajesController } from './mensajes/mensajes.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MensajesService } from './mensajes/mensajes.service';
+import { Mensaje } from './mensajes/dto/entities/mensaje.entity';
 
 @Module({
   imports: [
@@ -13,11 +15,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'nest',
       password: 'app',
       database: 'messageapp',
-      entities: [__dirname + '/++/*.entity(.ts, .js)'],
+      entities: [ __dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    TypeOrmModule.forFeature([Mensaje])
   ],
   controllers: [AppController, MensajesController],
-  providers: [AppService],
+  providers: [AppService, MensajesService],
 })
 export class AppModule {}
